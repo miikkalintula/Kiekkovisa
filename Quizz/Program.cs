@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Threading;
 
 namespace Quizz
 {
@@ -37,10 +39,23 @@ namespace Quizz
 
         private static void Pelaa()
         {
-            Console.WriteLine("Tervetuloa pelaamaan lätkävisaa!");
+
+            
+            Console.WriteLine(@" _   _       _    _       _            _____  _____ 	");
+            Console.WriteLine(@"| | | |     | |  (_)     (_)          / __  \|  _  |	");
+            Console.WriteLine(@"| |_| | ___ | | _____   ___ ___  __ _ `' / /'| |/' |	");
+            Console.WriteLine(@"|  _  |/ _ \| |/ / \ \ / / / __|/ _` |  / /  |  /| |    ");
+            Console.WriteLine(@"| | | | (_) |   <| |\ V /| \__ \ (_| |./ /___\ |_/ /	");
+            Console.WriteLine(@"\_| |_/\___/|_|\_\_| \_/ |_|___/\__,_|\_____(_)___/ 	");
+
+
+            Console.WriteLine("");
+            Console.WriteLine("Tervetuloa pelaamaan Hokivisa kaks piste nollaa");
             Console.WriteLine("Mikä on nimesi?");
             nimi = Console.ReadLine();
             int kysymysCounter = 0; //tähän päivitetään kysyttyjen kysymysten määrä
+
+
             do
             {
                 foreach (string[] kysymys in splitattujenLista)
@@ -83,7 +98,7 @@ namespace Quizz
 
         private static void RandomoiKysymykset()
         {
-            string[] kysymysrivit = File.ReadAllLines("lätkävisa.txt");
+            string[] kysymysrivit = File.ReadAllLines("../../../lätkävisa.txt");
 
             Random rand = new Random();
             randomoidutKysmykset = kysymysrivit.OrderBy(x => rand.Next()).ToArray();
@@ -109,6 +124,12 @@ namespace Quizz
             Console.WriteLine($"Peli loppui.");
             Console.WriteLine($"{nimi}, tuloksesi oli {playerScore}.");
             Console.WriteLine(palaute);
+            
+
+
         }
-    }
+       
+        
+
+}
 }
