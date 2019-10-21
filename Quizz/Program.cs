@@ -52,7 +52,7 @@ namespace Quizz
                         Console.WriteLine(kysymys[i]);
                         first = true;
                     }
-                    Console.WriteLine("Anna vastaus");
+                    Console.WriteLine("Anna vastaus (käytä numeroita 1-3)");
                     //string vastaus = Console.ReadLine(); //nyt vastaus otetaan numerona!
 
                     bool oikeaFormaatti = false;
@@ -62,11 +62,18 @@ namespace Quizz
                         try
                         {
                             numVastaus = int.Parse(Console.ReadLine()); //nyt vastaus otetaan numerona!
-                            oikeaFormaatti = true;
+                            if(numVastaus<=3 && numVastaus > 0)
+                            {
+                                oikeaFormaatti = true;
+                            }
+                            else
+                            {
+                                throw new FormatException();
+                            }
                         }
                         catch (FormatException)
                         {
-                            Console.WriteLine("Käytä vastaamiseen numeroita!");
+                            Console.WriteLine("Käytä vastaamiseen numeroita 1-3!");
                         }
                     }
 
