@@ -45,16 +45,39 @@ namespace Quizz
                 foreach (string[] kysymys in splitattujenLista)
                 {
                     Console.Clear();
+                    bool first = false; //pitää huolen ettei järjestysnumeroa tule kysymyksen eteen vaan pelkästään vaihtoehtojen
                     for (int i = 0; i < 4; i++)
                     {
+                        if (first) { Console.Write(i + ": "); } //tulostaa vastauksen järjestysnumeron, jota käytetään vastaamiseen
                         Console.WriteLine(kysymys[i]);
+                        first = true;
                     }
                     Console.WriteLine("Anna vastaus");
-                    string vastaus = Console.ReadLine();
+                    //string vastaus = Console.ReadLine(); //nyt vastaus otetaan numerona!
 
-                    if (vastaus.ToString().Trim().ToLower() == kysymys[4].ToString().Trim() .ToLower())
+                    bool oikeaFormaatti = false;
+                    int numVastaus = 0;
+                    while (!oikeaFormaatti)
                     {
-                        Console.WriteLine("Oikea vastaus!");
+                        try
+                        {
+                            numVastaus = int.Parse(Console.ReadLine()); //nyt vastaus otetaan numerona!
+                            oikeaFormaatti = true;
+                        }
+                        catch (FormatException)
+                        {
+                            Console.WriteLine("Käytä vastaamiseen numeroita!");
+                        }
+                    }
+
+
+
+                    //if (kysymys[numVastaus] == )
+                        //if (vastaus.ToString().Trim().ToLower() == kysymys[4].ToString().Trim().ToLower())
+                        if (kysymys[numVastaus].ToString().Trim().ToLower() == kysymys[4].ToString().Trim().ToLower())
+
+                        {
+                            Console.WriteLine("Oikea vastaus!");
                         playerScore++;
                     }
                     else
@@ -71,6 +94,7 @@ namespace Quizz
             } while (kysymysCounter < splitattujenLista.Count);
         }
 
+        //vaihtoehtojen järjestyksen randomointi tulis tähän
         private static void SplittaaKysymyksenElementit()
         {
             for (int i = 0; i < kysymyslista.Count; i++)
@@ -82,7 +106,7 @@ namespace Quizz
 
         private static void RandomoiKysymykset()
         {
-            string[] kysymysrivit = File.ReadAllLines("lätkävisa.txt");
+            string[] kysymysrivit = File.ReadAllLines("../../../lätkävisa.txt");
 
             Random rand = new Random();
             randomoidutKysmykset = kysymysrivit.OrderBy(x => rand.Next()).ToArray();
