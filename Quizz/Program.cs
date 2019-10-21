@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Quizz
 {
@@ -56,16 +57,21 @@ namespace Quizz
                     {
                         Console.WriteLine("Oikea vastaus!");
                         playerScore++;
+                        
+
                     }
                     else
                     {
                         Console.WriteLine("Väärä vastaus. Oikea vastaus oli: " + kysymys[4].ToString() + ".") ;
+                    
                     }
+
                     Console.WriteLine("Paina enter jatkaaksesi.");
                     Console.ReadLine();
                     Console.Clear();
 
-                kysymysCounter++;
+
+                    kysymysCounter++;
                     
                 }
             } while (kysymysCounter < splitattujenLista.Count);
@@ -82,7 +88,7 @@ namespace Quizz
 
         private static void RandomoiKysymykset()
         {
-            string[] kysymysrivit = File.ReadAllLines("lätkävisa.txt");
+            string[] kysymysrivit = File.ReadAllLines("../../../lätkävisa.txt");
 
             Random rand = new Random();
             randomoidutKysmykset = kysymysrivit.OrderBy(x => rand.Next()).ToArray();
