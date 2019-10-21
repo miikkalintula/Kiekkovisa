@@ -7,6 +7,7 @@ namespace Quizz
 {
     class Program
     {
+        // testi kommentti
             //tiedoston luku: randomoi kymmenen riviä kysymyksiä
             //tallenna randomoidut kysymykset List<List<string>> tyyppiin
             //looppaa ulomman listan läpi (kokonaiset kysymysrivit)
