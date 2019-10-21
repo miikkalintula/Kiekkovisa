@@ -1,5 +1,5 @@
 # Kiekkovisa
-viikko 2 miniprojekti
+viikko 1 miniprojekti
 
 Lätkävisa
 Contributors: Miikka, Simo & Urho
